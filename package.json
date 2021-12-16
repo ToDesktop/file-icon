@@ -1,5 +1,5 @@
 {
-	"name": "file-icon",
+	"name": "@todesktop/file-icon-prebuild",
 	"version": "5.0.0",
 	"description": "Get the icon of a file or app as a PNG image (macOS)",
 	"license": "MIT",
@@ -17,8 +17,11 @@
 	},
 	"scripts": {
 		"test": "xo && ava",
-		"build": "swift build --configuration=release && mv .build/release/file-icon .",
-		"prepare": "npm run build"
+		"build": "swift build --configuration release --arch arm64 --arch x86_64 && mv .build/apple/Products/Release/file-icon .",
+		"prepare": "npm run build",
+		"release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "publish": "npm publish"
 	},
 	"files": [
 		"index.js",
